@@ -2,21 +2,19 @@
   <div id="headerEl" ref="headerEl" :class="state.isOnTop ? 'header top' : 'header notop'">
     <div class="header_container">
       <div class="header_left">
-        <img src="@/assets/logo.png" alt="" height='42'>
+        <img src="@/assets/logo.png" alt="" height='42' class="">
       </div>
       <div class="nav">
         <!-- menuList -->
         <template v-for="(item, index) in menuList">
-          <ul class="menu" :class="getActivePath() === item.path ? 'isonPress' : ''">
+          <ul class="menu" :class="[getActivePath() === item.path ? 'isonPress' : '', state.isOnTop ? '' : 'notop']">
             <li @click="goto(item.path)">{{ item['name'] }}</li>
-            <ul class="submenu">
-              <li>122</li>
-            </ul>
           </ul>
         </template>
-
       </div>
+      <div class="language-select relative left-4">CN</div>
     </div>
+    
   </div>
 </template>
 
@@ -116,34 +114,70 @@ const goto = (path: string) => {
     background: linear-gradient(rgb(226, 27, 27), transparent),
   }
 
-  25% {
-    background: linear-gradient(rgb(192, 50, 59), transparent),
+  15% {
+    background: linear-gradient(rgb(192, 50, 59), #fff),
   }
 
   25% {
-    background: linear-gradient(rgb(192, 67, 75), transparent),
+    background: linear-gradient(rgb(192, 67, 75), #fff),
   }
 
   50% {
-    background: linear-gradient(rgb(194, 94, 101), transparent),
+    background: linear-gradient(rgb(194, 94, 101), #fff),
   }
 
   75% {
-    background: linear-gradient(rgb(190, 142, 146), transparent),
+    background: linear-gradient(rgb(190, 142, 146), #fff),
 
   }
 
   95% {
-    background: linear-gradient(rgb(189, 156, 159), transparent),
+    background: linear-gradient(rgb(189, 156, 159), #fff),
   }
 
   100% {
-    background: linear-gradient(#fff, transparent),
+    background: linear-gradient(#fff, #fff),
+  }
+}
+
+@keyframes colorswitch3 {
+  0% {
+    background: linear-gradient(rgb(113, 247, 218), transparent),
+  }
+
+  15% {
+    background: linear-gradient(rgb(113, 247, 218), rgba(113, 247, 218, 0.137)),
+  }
+
+  25% {
+    background: linear-gradient(rgb(113, 247, 218), rgba(113, 247, 218, 0.322)),
+  }
+
+  50% {
+    background: linear-gradient(rgb(113, 247, 218), rgba(113, 247, 218, 0.507)),
+  }
+
+  75% {
+    background: linear-gradient(rgb(113, 247, 218), rgba(113, 247, 218, 0.747)),
+
+  }
+
+  95% {
+    background: linear-gradient(rgb(113, 247, 218), rgba(113, 247, 218, 0.89)),
+  }
+
+  100% {
+    background: linear-gradient(rgb(113, 247, 218), rgb(113, 247, 218)),
   }
 }
 
 .isonPress {
   background: linear-gradient(rgb(113, 247, 218), transparent),
+}
+
+.isonPress.notop {
+  animation: colorswitch3 linear 0.2s;
+  animation-fill-mode: forwards;
 }
 
 .header {
@@ -164,21 +198,28 @@ const goto = (path: string) => {
   &.notop {
     animation: colorswitch2 linear 0.2s;
     animation-fill-mode: forwards;
+    box-shadow:
+      0.5px 11px 10px rgba(0, 0, 0, 0.056),
   }
 
   .header_container {
-    width: 70%;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
 
     .header_left {
+      height: 100%;
       position: relative;
-      right: 8em;
+      right: 4em;
       width: 30%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      img {
+        height: 80%;
+      }
     }
 
     .nav {
@@ -186,21 +227,23 @@ const goto = (path: string) => {
       height: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
 
       .menu {
+        width: 6em;
         height: 100%;
         display: flex;
         align-items: center;
+        text-align: center;
       }
 
       li {
         font-size: 1.2em;
         cursor: pointer;
         position: relative;
-        width: 64px;
-        right: 5%;
+        width: 100%;
         display: flex;
+        justify-content: center;
       }
 
       .submenu {

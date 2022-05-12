@@ -24,7 +24,7 @@
           </ul>
         </li>
       </ul>
-      <div class="footer_text">版权所有©️XXXXXXX&emsp;&emsp;蜀ICP备05006379号-6I川公网安备 51019002000280 号</div>
+      <div class="footer_text">版权所有©️XXXXXXX&emsp;&emsp;蜀ICP备XXXXXX号-XX川公网安备 XXXXXXXXXXX 号</div>
     </div>
 
   </div>
